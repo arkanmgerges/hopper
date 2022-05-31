@@ -13,25 +13,26 @@ abstract class AbstractAppNavigationManager extends ChangeNotifier {
 
 
   /// Pushes a new route and replace all the previous routes.
-  Future<dynamic> pushReplacementPath(String path) {
+  Future<dynamic> pushReplacementPath(String path, [Map<String, dynamic>? params]) async {
     Completer completer = Completer();
     appRouteDataList = [];
-    _addPath(path, completer);
+    _addPath(path, completer, params);
     notifyListeners();
     return completer.future;
   }
 
   /// Pushes a new route
-  Future<dynamic> pushPath(String path) {
+  Future<dynamic> pushPath(String path, [Map<String, dynamic>? params]) {
     Completer completer = Completer();
-    _addPath(path, completer);
+    _addPath(path, completer, params);
     notifyListeners();
     return completer.future;
   }
 
-  /// Add a path to the list of paths, and notify listeners when the path is added. Also when the path is popped (see [popPage]),
-  /// the caller will be notified with the result of the [Completer] that was passed in.
-  void _addPath(String path, Completer? completer) {
+  /// Add a path to the list of paths, and notify listeners when the path is added. Also when the path is popped (see [popPage]).
+  /// The [Completer] is used to notify the caller when the path is popped.
+  /// The params are passed to the [AppPage] that is created.
+  void _addPath(String path, Completer? completer, Map<String, dynamic>? params) {
     if (appRouteDataList.isNotEmpty && appRouteDataList[appRouteDataList.length - 1].path.contains(path)) {
       completer?.complete(null);
       return;
@@ -52,13 +53,13 @@ abstract class AbstractAppNavigationManager extends ChangeNotifier {
       return;
     }
 
-    var pages = result.buildPages();
+    var pages = result.buildPages(path, params);
     if (pages.length > 1) {
       // It's not allowed to use completer for more than one page
       completer?.complete(null);
-      appRouteDataList.add(AppRouteData(path: path, pages: pages));
+      appRouteDataList.add(AppRouteData(path: path, pages: pages, params: params));
     } else {
-      appRouteDataList.add(AppRouteData(path: path, pages: pages, completer: completer));
+      appRouteDataList.add(AppRouteData(path: path, pages: pages, completer: completer, params: params));
     }
   }
 
@@ -100,7 +101,7 @@ abstract class AbstractAppNavigationManager extends ChangeNotifier {
         if (guard.shouldGuard(path)) {
           AppLocation? location = guard.guard();
           if (location != null) {
-            return location.buildPages();
+            return location.buildPages(path, lastAppRouteData.params);
           } else {
             break;
           }
@@ -115,7 +116,7 @@ abstract class AbstractAppNavigationManager extends ChangeNotifier {
 
   void addInitialPath() {
     if (appRouteDataList.isEmpty){
-    _addPath("/", null);
+    _addPath("/", null, null);
     }
   }
 

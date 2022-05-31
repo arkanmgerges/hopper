@@ -42,9 +42,9 @@ abstract class AbstractAppRouter extends RouterDelegate<AppRouteData> with Chang
 
 
 extension AppNavigationManagerExt on BuildContext {
-  Future<dynamic> hopNamed(String path) => Provider.of<AbstractAppNavigationManager>(this, listen: false).pushPath(path);
-  Future<dynamic> hopReplacementNamed(String path) => Provider.of<AbstractAppNavigationManager>(this, listen: false).pushReplacementPath(path);
-  void hopBack(result) => Provider.of<AbstractAppNavigationManager>(this, listen: false).popPage(result);
+  Future<dynamic> hopNamed(String path, [Map<String, dynamic>? params]) => Provider.of<AbstractAppNavigationManager>(this, listen: false).pushPath(path, params);
+  Future<dynamic> hopReplacementNamed(String path, [Map<String, dynamic>? params]) => Provider.of<AbstractAppNavigationManager>(this, listen: false).pushReplacementPath(path, params);
+  void hopBack([result]) => Provider.of<AbstractAppNavigationManager>(this, listen: false).popPage(result);
 }
 
 

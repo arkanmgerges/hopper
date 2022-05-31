@@ -15,6 +15,10 @@ This package is a library in order to use Flutter Navigator 2.0.
 
 **Please don't use it because it is in the early stages of development.**
 
+<p align="center">
+<img  width="140" src="https://raw.githubusercontent.com/arkanmgerges/hopper/master/resources/hopper.svg">
+</p>
+
 ## Features
 
 TODO: List what your package can do. Maybe include images, gifs, or videos.

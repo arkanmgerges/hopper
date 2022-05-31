@@ -1,5 +1,11 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
-
 Don't use this package it's still in the early stages of development.
+## 0.0.2
+Update README.md
+
+## 0.0.3
+Add push parameters to the navigator.
+
+## 0.0.4
+Add send parameters to page

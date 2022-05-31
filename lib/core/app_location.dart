@@ -2,5 +2,5 @@ part of hopper;
 
 abstract class AppLocation {
   List<Pattern> get pathPatterns;
-  List<AppPage> buildPages();
+  List<AppPage> buildPages(String path, Map<String, dynamic>? params);
 }
