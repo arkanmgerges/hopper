@@ -11,8 +11,9 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This package is a library in order to use Flutter Navigator 2.0.
+
+**Please don't use it because it is in the early stages of development.**
 
 ## Features
 
