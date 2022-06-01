@@ -80,6 +80,11 @@ abstract class AbstractAppNavigationManager extends ChangeNotifier {
         }
     }
 
+    // Add initial path if there are no pages
+    if (appRouteDataList.isEmpty) {
+      addInitialPath();
+    }
+
     notifyListeners();
   }
 
@@ -88,11 +93,9 @@ abstract class AbstractAppNavigationManager extends ChangeNotifier {
   /// Return the pages by building them from the appRouteDataList
   /// This function also verify the guards and if some patterns apply then it will get the pages by calling the guard() function
   List<AppPage> pages() {
-    //todo logging
-    developer.log("pages: ${pages.toString()}", name: 'AbstractAppNavigationManager::pages');
-
     // Get last app route data in order to check its path with the guard
     AppRouteData? lastAppRouteData = appRouteDataList.isNotEmpty ? appRouteDataList.last : null;
+    List<AppPage> result = [];
     if (lastAppRouteData == null) {
       return [];
     } else {
@@ -101,7 +104,10 @@ abstract class AbstractAppNavigationManager extends ChangeNotifier {
         if (guard.shouldGuard(path)) {
           AppLocation? location = guard.guard();
           if (location != null) {
-            return location.buildPages(path, lastAppRouteData.params);
+            result = location.buildPages(path, lastAppRouteData.params);
+            //todo logging
+            developer.log("pages (from location): ${result.toString()}", name: 'AbstractAppNavigationManager::pages');
+            return result;
           } else {
             break;
           }
@@ -109,9 +115,13 @@ abstract class AbstractAppNavigationManager extends ChangeNotifier {
       }
     }
 
-    return appRouteDataList.fold<List<AppPage>>([], (List<AppPage> list, AppRouteData routeData) {
+    result = appRouteDataList.fold<List<AppPage>>([], (List<AppPage> list, AppRouteData routeData) {
       return list..addAll(routeData.pages);
     });
+    //todo logging
+    developer.log("pages (from app route): ${result.toString()}", name: 'AbstractAppNavigationManager::pages');
+
+    return result;
   }
 
   void addInitialPath() {

@@ -1,6 +1,7 @@
 part of hopper;
 
 abstract class AbstractAppRouter extends RouterDelegate<AppRouteData> with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppRouteData> {
+  @override
   final GlobalKey<NavigatorState> navigatorKey;
   final AbstractAppNavigationManager Function(AbstractAppRouter) navigationManagerBuilder;
   static const String initialRoute = '/';
