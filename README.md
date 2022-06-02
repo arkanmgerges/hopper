@@ -26,7 +26,7 @@ and the Flutter guide for
 * It supports guards
 
 ## Why did I write this package?
-I had an app which I developed for a client which It used Flutter Navigator 1.0, and I needed for a new usecase to navigate to deep links which version 1.0 does not support. Then I decided to try some package out there on pub.dev [beamer](https://pub.dev/packages/beamer) which is a good package but unfortunately it did not support `await beamNamed(...etc)`, so opened a thread [on github.com](https://github.com/slovnicki/beamer/issues/525), and the author mentioned that this will be added (as for today is 06.feb.2022 when I'm mentioning here in this readme, and maybe in the future as you are reading this, it's already added).
+I had an app which I developed for a client which It used Flutter Navigator 1.0, and I needed for a new usecase to navigate to deep links which version 1.0 does not support. Then I decided to try some package out there on pub.dev [beamer](https://pub.dev/packages/beamer) which is a good package but unfortunately it did not support `await beamNamed(...etc)`, so I opened a thread [on github.com](https://github.com/slovnicki/beamer/issues/525), and the author mentioned that this will be added (as for today is 06.feb.2022 when I'm mentioning here in this readme, and maybe in the future as you are reading this, it's already added).
 
 So I decided to create this package and to migrate my app to it, and also I was in a hurry to write this package in order to finish my tasks related to the job (mobile app for the client).
 
