@@ -28,6 +28,25 @@ void main() {
       navManager.popPage(null);
       expect(navManager.pages()[0].key, const Key('/'));
     });
+    test('push the same path multiple times should get only avoid duplication', () {
+      var navManager = AppNavigationManager(MockAbstractAppRouter());
+      navManager.pushPath('/app_settings');
+      navManager.pushPath('/app_settings');
+      navManager.pushPath('/app_settings');
+      navManager.pushPath('/app_settings');
+      // the "/" and "/app_settings" should be the only two pages
+      expect(navManager.pages().length, 2);
+    });
+    test('pop all pages should leave the "/" path only', () {
+      var navManager = AppNavigationManager(MockAbstractAppRouter());
+      navManager.pushPath('/');
+      navManager.pushPath('/app_settings');
+      navManager.popPage(null);
+      navManager.popPage(null);
+      navManager.popPage(null);
+      expect(navManager.pages().length, 1);
+      expect(navManager.pages()[0].key, const Key('/'));
+    });
   });
 }
 

@@ -7,5 +7,7 @@ Update README.md
 ## 0.0.3
 Add push parameters to the navigator.
 
-## 0.0.4
-Add send parameters to page
+## 1.0.0
+- Add tests
+- Add documentation
+- Add examples
