@@ -217,7 +217,7 @@ class AppNavigationManager extends AbstractAppNavigationManager {
 
 
 ## Usage
-The package uses extenstion with `BuildContext`, see the follwing examples:
+The package uses extension with `BuildContext`, see the follwing examples:
 
 #### You can navigate to a page by using:
     * context.hopNamed('/home');
