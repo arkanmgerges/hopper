@@ -26,7 +26,7 @@ and the Flutter guide for
 * It supports guards
 
 ## Why did I write this package?
-I had an app which I developed for a client which It used Flutter Navigator 1.0, and I needed for a new usecase to navigate to deep links which version 1.0 does not support. Then I decided to try some package out there on pub.dev [beamer](https://pub.dev/packages/beamer) which is a good package but unfortunately it did not support `await beamNamed(...etc)`, so I opened a thread [on github.com](https://github.com/slovnicki/beamer/issues/525), and the author mentioned that this will be added (as for today is 06.feb.2022 when I'm mentioning here in this readme, and maybe in the future as you are reading this, it's already added).
+I had an app which I developed for a client which It used Flutter Navigator 1.0, and I needed a new package a new use case to navigate to deep links which version 1.0 does not support. Then I decided to try some package out there on pub.dev [beamer](https://pub.dev/packages/beamer) which is a good package but unfortunately it did not support `await beamNamed(...etc)`, so I opened a thread [on github.com](https://github.com/slovnicki/beamer/issues/525), and the author mentioned that this will be added (as for today is 06.feb.2022 when I'm mentioning it here in this readme, and maybe in the future as you are reading this, it's already added).
 
 So I decided to create this package and to migrate my app to it, and also I was in a hurry to write this package in order to finish my tasks related to the job (mobile app for the client).
 
@@ -184,7 +184,7 @@ class AppNavigationManager extends AbstractAppNavigationManager {
     AppNavigationGuard(
       guardExcludePattern: r"(/project_manager_login|/technician_login|/app_settings|/device_assignment)$",
       guardPattern: r"/*",
-      guard: () {
+      guard: (path) {
         final appCubit = AppDi().appCubit();
         if (appCubit.state.appToken.isEmpty &&
             appCubit.state.authToken.isEmpty) {
@@ -217,7 +217,7 @@ class AppNavigationManager extends AbstractAppNavigationManager {
 
 
 ## Usage
-The package uses extenstion with `BuildContext`, see the follwing examples:
+The package uses extension with `BuildContext`, see the following examples:
 
 #### You can navigate to a page by using:
     * context.hopNamed('/home');
@@ -239,7 +239,7 @@ The package uses extenstion with `BuildContext`, see the follwing examples:
 
 ## Additional information
 
-Check the `exmples` folder for more examples.
+Check the `exmple` folder for more examples.
 You will find also `deeplinks` example that shows how to jump into the deep page and get back to previous page(s).
 
 ## Contribution

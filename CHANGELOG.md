@@ -11,3 +11,6 @@ Add push parameters to the navigator.
 - Add tests
 - Add documentation
 - Add examples
+
+## 1.1.0
+- Add 'path' to the guard in order to receive the current path

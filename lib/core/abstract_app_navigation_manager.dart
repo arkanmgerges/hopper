@@ -102,7 +102,7 @@ abstract class AbstractAppNavigationManager extends ChangeNotifier {
       String path = lastAppRouteData.path;
       for (AppNavigationGuard guard in guards) {
         if (guard.shouldGuard(path)) {
-          AppLocation? location = guard.guard();
+          AppLocation? location = guard.guard(path);
           if (location != null) {
             result = location.buildPages(path, lastAppRouteData.params);
             //todo logging

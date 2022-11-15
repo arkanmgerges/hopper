@@ -60,7 +60,7 @@ class AppNavigationManager extends AbstractAppNavigationManager {
       guardExcludePattern:
       r"(/project_manager_login|/technician_login|/app_settings|/device_assignment)$",
       guardPattern: r"/*",
-      guard: () {
+      guard: (path) {
         return null;
       },
     ),

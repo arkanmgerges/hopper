@@ -3,7 +3,7 @@ part of hopper;
 class AppNavigationGuard {
   final Pattern guardPattern;
   final Pattern? guardExcludePattern;
-  final AppLocation? Function() guard;
+  final AppLocation? Function(String) guard;
 
   AppNavigationGuard({required this.guardPattern, required this.guard, this.guardExcludePattern});
 
