@@ -41,7 +41,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  hopper: ^1.0.0
+  hopper: ^1.1.0
 
 ```
 2. Create your `main.dart` file and add the following code:
