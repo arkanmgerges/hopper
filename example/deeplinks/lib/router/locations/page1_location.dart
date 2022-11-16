@@ -18,4 +18,9 @@ class Page1Location extends AppLocation {
       ),
     ];
   }
+
+  @override
+  String getRoute() {
+    return route;
+  }
 }

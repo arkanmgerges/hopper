@@ -18,4 +18,9 @@ class HomeLocation extends AppLocation {
       ),
     ];
   }
+
+  @override
+  String getRoute() {
+    return route;
+  }
 }

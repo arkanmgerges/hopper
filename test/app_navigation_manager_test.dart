@@ -90,6 +90,11 @@ class HomeLocation extends AppLocation {
       ),
     ];
   }
+
+  @override
+  String getRoute() {
+    return route;
+  }
 }
 
 class SettingsLocation extends AppLocation {
@@ -109,5 +114,10 @@ class SettingsLocation extends AppLocation {
         ),
       ),
     ];
+  }
+
+  @override
+  String getRoute() {
+    return route;
   }
 }

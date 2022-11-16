@@ -41,7 +41,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  hopper: ^1.1.0
+  hopper: ^1.2.0
 
 ```
 2. Create your `main.dart` file and add the following code:
@@ -112,6 +112,11 @@ class HomeLocation extends AppLocation {
         child: HomePage(title: 'Home Page',),
       ),
     ];
+  }
+
+  @override
+  String getRoute() {
+    return route;
   }
 }
 ```
@@ -211,7 +216,6 @@ class AppNavigationManager extends AbstractAppNavigationManager {
     HomeLocation(),
   ];
 }
-
 ```
 
 

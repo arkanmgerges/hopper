@@ -34,7 +34,6 @@ class AppNavigationManager extends AbstractAppNavigationManager {
       ];
 }
 
-
 // Locations
 class HomeLocation extends AppLocation {
   static const String route = '/';
@@ -51,6 +50,11 @@ class HomeLocation extends AppLocation {
         child: HomePage(),
       ),
     ];
+  }
+
+  @override
+  String getRoute() {
+    return route;
   }
 }
 
@@ -72,8 +76,12 @@ class SettingsLocation extends AppLocation {
       ),
     ];
   }
-}
 
+  @override
+  String getRoute() {
+    return route;
+  }
+}
 
 // Tests
 Widget createWidgetUnderTest() {
@@ -88,7 +96,8 @@ Widget createWidgetUnderTest() {
 }
 
 void main() {
-  testWidgets("Find Hello World! in the home page", (WidgetTester tester) async {
+  testWidgets("Find Hello World! in the home page",
+      (WidgetTester tester) async {
     await tester.pumpWidget(createWidgetUnderTest());
     expect(find.text('Hello World!'), findsOneWidget);
     await tester.tap(find.byType(ElevatedButton));
@@ -96,7 +105,6 @@ void main() {
     expect(find.text('Settings'), findsOneWidget);
   });
 }
-
 
 // Pages
 class HomePage extends StatelessWidget {

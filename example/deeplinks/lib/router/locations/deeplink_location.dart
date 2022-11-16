@@ -30,4 +30,9 @@ class DeeplinkLocation extends AppLocation {
       ),
     ];
   }
+
+  @override
+  String getRoute() {
+    return route;
+  }
 }
